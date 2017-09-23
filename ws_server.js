@@ -18,11 +18,11 @@ let USERS = [];
 function prepare_server(){
     SERVER = express();
     SERVER.use(express.static(__dirname + '/public'));
-    let app = SERVER.listen(80);
+    let app = SERVER.listen(process.env.PORT);
     // WS
     WS = new WebSocketServer({
-        port                : 3000,
-        perMessageDeflate   : false,
+        //port                : process.env.PORT,
+        //perMessageDeflate   : true,
         server              : app
     });
     WS.on('connection', function(ws) { 
